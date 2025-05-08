@@ -1,35 +1,60 @@
-🦑 Squid Game Detector
-¡Bienvenido a Squid Game Detector!
-Un proyecto inspirado en el famoso juego "Luz roja, luz verde" de la serie Squid Game... pero llevado al mundo de la visión por computadora. 🎯
+<h1 align="center" style="font-size: 3em;">🦑 SQUID GAME DETECTOR 🦑</h1>
 
-Creador: Diego Lewensztain
+**¡Bienvenido a Squid Game Detector!** Un proyecto inspirado en el famoso juego "Luz roja, luz verde" de la serie Squid Game... pero llevado al mundo de la visión por computadora. 🎯
 
-📚 ¿De qué se trata este proyecto?
-Con ayuda de inteligencia artificial, mediapipe y OpenCV, hemos desarrollado un sistema capaz de:
+**Creado por:** Diego Lewensztain
 
-Detectar movimientos humanos en cámara.
+## 📚 ¿Qué es este proyecto?
 
-"Eliminar" a quienes se mueven cuando no deberían. (¡Como en el juego!)
+Con ayuda de **inteligencia artificial**, **MediaPipe** y **OpenCV**, hemos desarrollado un sistema interactivo que:
 
-Recrear de manera interactiva una de las pruebas más icónicas de Squid Game.
+- **Detecta movimientos humanos** en tiempo real usando tu cámara web
+- **"Elimina jugadores"** que se mueven cuando no deberían (¡igual que en el juego!)
+- **Recrea la experiencia** de una de las pruebas más icónicas de Squid Game
+- Usa tecnologías accesibles para que cualquiera pueda probarlo en su computadora 🚀
 
-Todo esto, usando tecnologías accesibles, para que cualquiera pueda probarlo en su computadora. 🚀
+## 🛠️ Tecnologías utilizadas
 
-🛠️ Tecnologías usadas
-Python 3.11
+- **Python 3.11** - Lenguaje de programación principal
+- **MediaPipe** - Para detección de postura corporal
+- **OpenCV** - Procesamiento de video en tiempo real
+- **Numpy** - Cálculos matemáticos rápidos
 
-Mediapipe (detección de pose corporal)
+## 👀 ¿Por qué es interesante este proyecto?
 
-OpenCV (procesamiento de video)
+- **No requiere hardware especial** - Solo necesitas tu cámara web integrada 🎥
+- **Código educativo** - Perfecto para aprender visión por computadora
+- **Sistema de detección preciso** - Usa múltiples puntos clave del cuerpo
+- **Rendimiento optimizado** - Funciona en tiempo real incluso en hardware modesto
+- **Divertido y competitivo** - Ideal para retos con amigos
 
-Numpy (cálculos rápidos)
+## 🎮 ¿Cómo funciona el juego?
 
-👀 ¿Por qué es curioso este proyecto?
-No necesitas hardware especial, ¡solo tu cámara web! 🎥
+El sistema sigue este flujo:
 
-El código es fácil de entender, ideal si te interesa visión por computadora.
+1. **Detección inicial**:
+   - Usa MediaPipe para identificar personas frente a la cámara
+   - Asigna un ID único a cada jugador (hasta 3 máximo)
 
-Aprendes cómo funcionan detectores de movimiento reales en un contexto divertido.
+2. **Fase "Luz verde"**:
+   - Los jugadores pueden moverse libremente
+   - El sistema registra sus posiciones iniciales
 
-El detector es tan rápido que podrías usarlo hasta para mini-retos o competencias con tus amigos.
+3. **Fase "Luz roja"**:
+   - Monitorea micromovimientos usando puntos clave corporales
+   - Compara posiciones actuales con históricos
+   - Si detecta movimiento por encima del umbral (`UMBRAL_MOVIMIENTO`), penaliza al jugador
 
+4. **Visualización**:
+   - Muestra esqueletos de los jugadores (verdes = seguros, rojos = penalizados)
+   - Barra superior con estado del juego y jugadores eliminados
+
+## ⚙️ Configuración técnica clave
+
+El código utiliza varios parámetros ajustables:
+
+```python
+# Parámetros principales
+UMBRAL_MOVIMIENTO = 0.01  # Sensibilidad al movimiento
+MAX_JUGADORES = 3         # Límite de jugadores
+MAX_HISTORICO = 5         # Frames almacenados para comparación
